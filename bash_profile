@@ -1,12 +1,9 @@
-# Aliases
-alias dirs="dirs -v"
-alias pd="pushd > /dev/null"
-alias pwdp="pwd -P"
-alias hg="history | grep"
+#!/bin/bash
 
-# Environment variables
-export MYVIMRC="~/.vimrc"
-export EDITOR="/usr/local/bin/mvim"
+if [ -e "$HOME/.bashrc" ]
+  then
+    source $HOME/.bashrc
+fi
 
 # Ignore whitespace and duplicates. Erase duplicates.
 export HISTCONTROL=ignorespace:ignoredups:erasedups
