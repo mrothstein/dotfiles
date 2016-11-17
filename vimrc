@@ -2,10 +2,7 @@
 set nocompatible
 
 " pathogen needs to run before plugin indent on 
-execute pathogen#infect()
-
 filetype plugin indent on
-syntax on
 filetype off 
 
 if has("gui_running")
@@ -96,3 +93,5 @@ function! XTermPasteBegin()
 endfunction
 
 inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
+
+syntax on
