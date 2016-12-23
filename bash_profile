@@ -29,3 +29,5 @@ chrome () {
 
 # Load ssh keys
 { eval `ssh-agent`; ssh-add -A; } &> /dev/null
+
+test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
