@@ -1,19 +1,20 @@
 " Don't try to be vi compatible
 set nocompatible
 
-" pathogen needs to run before plugin indent on 
+" pathogen needs to run before plugin indent on
+execute pathogen#infect()
 filetype plugin indent on
-filetype off 
+filetype off
 
-if has("gui_running")
-  set lines=65 columns=200
-  colorscheme elflord
-  set guifont=Monaco\ 11
-endif
+colorscheme peachpuff
 
 let mapleader=','
 set wildmenu
 set wildmode=list:longest
+
+" Whitespace plugin config
+noremap <leader>ws :StripWhitespace<cr>
+let g:better_whitespace_filetypes_blacklist=['log']
 
 " Turn on line numbers
 set number
@@ -27,9 +28,6 @@ set ttyfast
 " Turn off error bells
 set noerrorbells
 
-" Searching
-"nnoremap / /\v
-"vnoremap / /\v
 set smartcase
 set showmatch
 set showcmd
@@ -42,8 +40,11 @@ set softtabstop=2
 set backspace=2
 set smartindent
 set directory=~/.vim/swapfiles//
-"set backupdir=~/.vim/backup/
+set backupdir=~/.vim/backup/
 "set undodir=~/.vim/undo/
+
+" Tags
+set tags=./tags;.tags;
 
 inoremap jk <esc>
 noremap <leader>f <c-f>
@@ -65,12 +66,6 @@ nnoremap :small :set columns=100<cr> :set lines=51<cr>
 " Set filetype to cpp (for cpp files not ending in .cpp or .hpp)
 nnoremap <leader>cpp :set filetype=cpp<cr>
 nnoremap <leader>rby :set filetype=cpp<cr>
-
-"autocmd BufNewFile *.pl 0r ~/.vim/skeletons/skeleton.pl autocmd FileType perl nnoremap <buffer> <mapleader>c I#<esc> 
-"remove white spaces on read and write of file 
-"autocmd Filetype perl autocmd BufWritePre,BufRead <buffer> StripWhitespace 
-"turn off better whitespace for log files 
-"let g:better_whitespace_filetypes_blacklist=['*.log']
 
 function! WrapForTmux(s)
   if !exists('$TMUX')
