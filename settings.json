@@ -1,0 +1,89 @@
+{
+    /*
+    Files
+    */
+    "files.autoSave": "off",
+
+    /*
+    Workbench
+    */
+    // Reference: https://github.com/Microsoft/vscode/issues/7643#issuecomment-226435155
+    "workbench.editor.enablePreview": false,
+    "workbench.editor.enablePreviewFromQuickOpen": false,
+    // Insert spaces when pressing Tab. This setting is overriden based on the
+    // file contents when `editor.detectIndentation` is on.
+    "editor.insertSpaces": true,
+
+    /*
+    VIM
+    */
+    "vim.leader": ",",
+    "vim.disableAnnoyingNeovimMessage": true,
+    "vim.cmdLineInitialColon": true,
+    "vim.useSystemClipboard": true,
+    "vim.hlsearch": true,
+    "vim.smartcase": true,
+    "vim.ignorecase": true,
+    "vim.insertModeKeyBindings": [
+        {
+            "before": ["j", "k"],
+            "after": ["<Esc>"]
+        }
+    ],
+    "vim.otherModesKeyBindingsNonRecursive": [
+        {
+            "before": ["<leader>", "t"],
+            "after": [],
+            "commands": [
+                {
+                    "command": ":tabn"
+                }
+            ]
+        },
+        {
+            "before": ["<leader>", "f"],
+            "after": ["<C-f>"]
+        },
+        {
+            "before": ["<leader>", "w"],
+            "after": ["<C-w>", "w"]
+        },
+        {
+            "before": ["<leader>", "e"],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.view.explorer",
+                    "args": []
+                }
+            ]
+        },
+        {
+            "before": [":", "w"],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.files.save",
+                    "args": []
+                }
+            ]
+        },
+        /*
+        // Can't get this to work. The workbench command works, but the CTRL-^ does not
+        {
+            "before": ["<C-^>"],
+            "after": [],
+            "commands": [
+                {
+                    "command": "workbench.action.previousEditor",
+                    "args": []
+                }
+            ]
+        },
+        */
+        {
+            "before": ["<leader>", "r"],
+            "after": ["<C-b>"]
+        }
+    ]
+}

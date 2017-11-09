@@ -31,3 +31,7 @@ chrome () {
 { eval `ssh-agent`; ssh-add -A; } &> /dev/null
 
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export JAVA_HOME=/Library/Java/Home
