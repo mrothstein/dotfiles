@@ -37,11 +37,6 @@ chrome () {
     open -a "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" "$1"
 }
 
-cu() {
-  curl $1
-  echo ""
-}
-
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 # Show git branch with colors in bash prompt
 # https://coderwall.com/p/fasnya/add-git-branch-name-to-bash-prompt
