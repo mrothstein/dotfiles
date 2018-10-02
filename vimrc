@@ -1,5 +1,5 @@
 " Don't try to be vi compatible
-set nocompatible
+" set nocompatible
 
 " pathogen needs to run before plugin indent on
 execute pathogen#infect()

@@ -1,4 +1,5 @@
 {
+    "eslint.autoFixOnSave": true,
     /*
     Files
     */
@@ -18,8 +19,6 @@
     VIM
     */
     "vim.leader": ",",
-    "vim.disableAnnoyingNeovimMessage": true,
-    "vim.cmdLineInitialColon": true,
     "vim.useSystemClipboard": true,
     "vim.hlsearch": true,
     "vim.smartcase": true,
@@ -30,7 +29,7 @@
             "after": ["<Esc>"]
         }
     ],
-    "vim.otherModesKeyBindingsNonRecursive": [
+    "vim.normalModeKeyBindingsNonRecursive": [
         {
             "before": ["<leader>", "t"],
             "after": [],
@@ -68,22 +67,11 @@
                 }
             ]
         },
-        /*
-        // Can't get this to work. The workbench command works, but the CTRL-^ does not
-        {
-            "before": ["<C-^>"],
-            "after": [],
-            "commands": [
-                {
-                    "command": "workbench.action.previousEditor",
-                    "args": []
-                }
-            ]
-        },
-        */
         {
             "before": ["<leader>", "r"],
             "after": ["<C-b>"]
         }
-    ]
+    ],
+    "window.zoomLevel": 1,
+    "editor.minimap.enabled": false
 }
