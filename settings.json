@@ -72,6 +72,7 @@
             "after": ["<C-b>"]
         }
     ],
-    "window.zoomLevel": 1,
-    "editor.minimap.enabled": false
+    "window.zoomLevel": 0,
+    "editor.minimap.enabled": false,
+    "editor.fontSize": 14
 }

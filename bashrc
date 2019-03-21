@@ -5,6 +5,7 @@ alias dirs="dirs -v"
 alias pd="pushd > /dev/null"
 alias pwdp="pwd -P"
 alias hg="history | grep"
+alias gcn="git commit --no-verify"
 
 # Environment variables
 export MYVIMRC="~/.vimrc"
@@ -37,12 +38,23 @@ chrome () {
     open -a "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" "$1"
 }
 
+firefox() {
+  open -a "/Applications/Firefox.app" "$1"
+}
+
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 # Show git branch with colors in bash prompt
 # https://coderwall.com/p/fasnya/add-git-branch-name-to-bash-prompt
 parse_git_branch() {
      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
-export PS1="\u@\h \$(parse_git_branch)\[\033[00m\] $ "
+export PS1="\u@\h \w \[\033[32m\]\$(parse_git_branch)\[\033[00m\] \n  \$ "
 
 [ -s "/Users/max.rothstein/.scm_breeze/scm_breeze.sh" ] && source "/Users/max.rothstein/.scm_breeze/scm_breeze.sh"
+
+# Add dotnet to path
+export PATH=$HOME/bin:$PATH:/usr/local/share/
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
