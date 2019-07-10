@@ -6,6 +6,7 @@ alias pd="pushd > /dev/null"
 alias pwdp="pwd -P"
 alias hg="history | grep"
 alias gcn="git commit --no-verify"
+alias vim="nvim"
 
 # Environment variables
 export MYVIMRC="~/.vimrc"
@@ -15,6 +16,7 @@ if [ -f /Users/max/.tnsrc ]; then
     source /Users/max/.tnsrc
 fi
 ###-tns-completion-end-###
+
 # Ignore whitespace and duplicates. Erase duplicates.
 
 export HISTCONTROL=ignorespace:ignoredups:erasedups
@@ -53,7 +55,7 @@ export PS1="\u@\h \w \[\033[32m\]\$(parse_git_branch)\[\033[00m\] \n  \$ "
 [ -s "/Users/max.rothstein/.scm_breeze/scm_breeze.sh" ] && source "/Users/max.rothstein/.scm_breeze/scm_breeze.sh"
 
 # Add dotnet to path
-export PATH=$HOME/bin:$PATH:/usr/local/share/
+export PATH=$HOME/bin:/usr/local/bin:$PATH:/usr/local/share/
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

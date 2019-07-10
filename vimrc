@@ -1,5 +1,11 @@
-let g:python_host_prog = 'usr/local/bin/python'
-let g:python3_host_prog = 'usr/local/bin/python3'
+" set the verbose command
+" set verbose=9
+" set verbosefile=verbose.txt
+let mapleader=','
+let maplocalleader=','
+
+let g:python_host_prog = '/usr/local/bin/python'
+let g:python3_host_prog = '/usr/local/bin/python3'
 let g:OmniSharp_server_path = '~/.omnisharp/omnisharp.http-linux-x64/omnisharp/OmniSharp.exe'
 
 if has('nvim')
@@ -12,16 +18,45 @@ if has('nvim')
   Plug 'ntpeters/vim-better-whitespace'
   Plug 'tpope/vim-fugitive'
   Plug 'alvan/vim-closetag'
+  Plug 'ludovicchabant/vim-gutentags'
+  Plug 'Shougo/deoplete.nvim', { 'do': 'UpdateRemotePlugins' }
+  Plug 'ternjs/tern_for_vim', { 'do': 'npm install && npm install -g tern' }
+  Plug 'carlitux/deoplete-ternjs'
+  Plug 'mhinz/vim-grepper'
+  Plug 'derekwyatt/vim-scala'
+  Plug 'leafgarland/typescript-vim'
+  Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
   call plug#end()
 endif
 
-let mapleader=','
 inoremap jk <esc>
 syntax on
 
 "
 " Plugin related configurations
 "
+
+"  Deoplete
+let g:deoplete#enable_at_startup=0
+autocmd FileType text call deoplete#disable()
+autocmd FileType javascript call deoplete#enable()
+autocmd CompleteDone * silent! pclose!
+let g:deoplete#_python_version_check=1
+let g:deoplete#enable_ignore_case = 1
+let g:deoplete#enable_smart_case = 1
+let g:deoplete#enable_camel_case = 1
+let g:deoplete#enable_refresh_always = 1
+let g:deoplete#max_abbr_width = 0
+let g:deoplete#max_menu_width = 0
+let g:deoplete#max_list = 5
+" let g:deoplete#omni#input_patterns = get(g:,'deoplete#omni#input_patterns',{})
+
+let g:tern_request_timeout = 1
+let g:tern_request_timeout = 6000
+let g:tern#command = ['tern']
+let g:tern#arguments = [' — persistent']
+let g:tern_map_keys = 1
+nnoremap <C-]> :TernDef<cr>
 
 " Whitespace plugin (npeters/vim-better-whitespace)
 noremap <leader>ws :StripWhitespace<cr>
@@ -33,7 +68,7 @@ let g:current_line_whitespace_disabled_soft=1
 " Colorscheme (mhartington/oceanic-next)
 let g:oceanic_next_terminal_bold=1
 let g:oceanic_next_terminal_italic=1
-colorscheme OceanicNext
+silent! colorscheme OceanicNext
 
 " https://github.com/pangloss/vim-javascript
 let g:javascript_plugin_jsdoc=1
@@ -42,6 +77,12 @@ let g:javascript_plugin_jsdoc=1
 let g:closetag_filenames='*.js'
 let g:closetag_filetypes='js,jsx'
 let g:closetag_shortcut='>'
+
+" vim-gutentags
+" let g:gutentags_trace=1
+
+" Markdown Preview (iamcco/markdown-preview.nvivm)
+let g:mkdp_auto_close = 0
 
 "
 " General Configurations
@@ -62,7 +103,6 @@ set softtabstop=4
 set showmatch
 set showcmd
 set smartindent
-set tags=./tags;.tags;
 set wildmenu
 set wildmode=list:longest
 
@@ -70,7 +110,8 @@ set wildmode=list:longest
 "
 " Remapping
 "
-nnoremap <leader><space> :let @/=''<cr> " clear search
+" clear search
+nnoremap <leader><space> :let @/=''<cr>
 nnoremap <leader>f <c-f>
 nnoremap <leader>r <c-b>
 nnoremap <leader>w <c-w>w
@@ -83,9 +124,7 @@ nnoremap <leader>ev :e $MYVIMRC<cr>
 nnoremap <leader>e :e <C-R>=expand("%:p:h")."/"<cr>
 nnoremap <leader>s :vsp <C-R>=expand("%:p:h")."/"<cr>
 cabbr <expr> %% expand('%:p:h')
-nnoremap tt :tabn<cr>
 nnoremap <leader>sb :vsp<cr>:b
-nnoremap :small :set columns=100<cr> :set lines=51<cr>
 " Set filetype to cpp (for cpp files not ending in .cpp or .hpp)
 nnoremap <leader>cpp :set filetype=cpp<cr>
 nnoremap <leader>rby :set filetype=cpp<cr>
